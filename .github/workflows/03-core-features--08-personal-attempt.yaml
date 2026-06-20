@@ -1,0 +1,37 @@
+name: Testing variables and secrets Dev/Staging
+on:
+  push:
+    branches:
+      - "dev/*"
+  workflow_dispatch:
+env:
+  REPO_SECRET: ${{ secrets.REPO_SECRET }}
+  REPO_VARIABLE: ${{ secrets.REPO_VARIABLE }}
+
+jobs:
+  staging-action:
+    runs-on: ubuntu-24.04
+    environment: staging
+    env:
+      ENV_SECRET: ${{ secrets.ENV_SECRET }}
+      ENV_VARIABLE: ${{ secrets.ENV_VARIABLE }}
+    steps:
+      - name: Testing Github Variables and Secrets
+        run: |
+          echo "👾Secret from Repo: $REPO_SECRET"
+          echo "👾Variable from Repo: $REPO_VARIABLE"
+          echo "☘️Secret from Environment: $ENV_SECRET"
+          echo "☘️Variable from Environment: $ENV_VARIABLE"
+  dev-action:
+    runs-on: ubuntu-24.04
+    environment: development
+    env:
+      ENV_SECRET: ${{ secrets.ENV_SECRET }}
+      ENV_VARIABLE: ${{ secrets.ENV_VARIABLE }}
+    steps:
+      - name: Testing Github Variables and Secrets
+        run: |
+          echo "👾Secret from Repo: $REPO_SECRET"
+          echo "👾Variable from Repo: $REPO_VARIABLE"
+          echo "☘️Secret from Environment: $ENV_SECRET"
+          echo "☘️Variable from Environment: $ENV_VARIABLE"
