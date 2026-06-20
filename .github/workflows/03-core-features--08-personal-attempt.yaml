@@ -4,15 +4,14 @@ on:
     branches:
       - "dev/*"
   workflow_dispatch:
-env:
-  REPO_SECRET: ${{ secrets.REPO_SECRET }}
-  REPO_VARIABLE: ${{ vars.REPO_VARIABLE }}
 
 jobs:
   staging-action:
     runs-on: ubuntu-24.04
     environment: staging
     env:
+      REPO_SECRET: ${{ secrets.REPO_SECRET }}
+      REPO_VARIABLE: ${{ vars.REPO_VARIABLE }}
       ENV_SECRET: ${{ secrets.ENV_SECRET }}
       ENV_VARIABLE: ${{ vars.ENV_VARIABLE }}
     steps:
@@ -26,6 +25,8 @@ jobs:
     runs-on: ubuntu-24.04
     environment: development
     env:
+      REPO_SECRET: ${{ secrets.REPO_SECRET }}
+      REPO_VARIABLE: ${{ vars.REPO_VARIABLE }}
       ENV_SECRET: ${{ secrets.ENV_SECRET }}
       ENV_VARIABLE: ${{ vars.ENV_VARIABLE }}
     steps:
