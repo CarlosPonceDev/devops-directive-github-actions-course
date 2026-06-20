@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-24.04
     environment: staging
     env:
-      ENV_SECRET: ${{ secrets.ENV_SECRET }}
-      ENV_VARIABLE: ${{ secrets.ENV_VARIABLE }}
+      ENV_SECRET: ${{ vars.ENV_SECRET }}
+      ENV_VARIABLE: ${{ vars.ENV_VARIABLE }}
     steps:
       - name: Testing Github Variables and Secrets
         run: |
@@ -26,8 +26,8 @@ jobs:
     runs-on: ubuntu-24.04
     environment: development
     env:
-      ENV_SECRET: ${{ secrets.ENV_SECRET }}
-      ENV_VARIABLE: ${{ secrets.ENV_VARIABLE }}
+      ENV_SECRET: ${{ vars.ENV_SECRET }}
+      ENV_VARIABLE: ${{ vars.ENV_VARIABLE }}
     steps:
       - name: Testing Github Variables and Secrets
         run: |
